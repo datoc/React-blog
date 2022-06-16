@@ -1,0 +1,269 @@
+$bg: #F1F2F3;
+$gradient1: #F00B51;
+$gradient2: #7366FF;
+
+@font-face { font-family: "Allison"; src: url("./fonts/Allison-Regular.ttf"); }
+@font-face { font-family: "NINO"; src: url("./fonts/bpgnino.ttf"); }
+
+@function set_hiden() {
+    @return hidden;
+}
+
+@function set_gradient() {
+    @return linear-gradient(to bottom right, transparentize($gradient1, .3), transparentize($gradient2, .3));
+}
+
+@mixin startup() {
+    margin: 0;
+    padding: 0;
+}
+
+@mixin durations() {
+    -webkit-transition-duration: 0.4s;
+    -ms-transition-duration: 0.4s;
+    -moz-transition-duration: 0.4s;
+    -o-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+}
+
+@media screen and (max-width: 768px) {
+    .navbar-dark {
+        background-color: #202020 !important;
+    }
+}
+
+html, body {
+    background-color: $bg;
+    @include startup();
+}
+
+.navbar-dark {
+    background-color: rgba(0, 0, 0, 0.0);
+}
+
+.nav-link {
+    font-family: "NINO" !important;
+    font-weight: bold;
+    color: #fff !important;
+}
+
+.custom {
+    font-family: "Allison";
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+        color: #F1F2F3;
+        text-decoration: none;
+    }
+}
+
+@-webkit-keyframes anim {
+    0% {transform: scale(0.8)};
+    25% {transform: scale(1)};
+    50% {transform: scale(1)};
+    100% {transform: scale(0.8)};
+}
+
+@keyframes anim {
+    0% {transform: scale(0.8)};
+    25% {transform: scale(1)};
+    50% {transform: scale(1)};
+    100% {transform: scale(0.8)};
+}
+
+.header {
+    @include startup();
+    width: 100%;
+    height: 100vh;
+    background-image: url("./images/h.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: set_hiden();
+    text-align: center;
+
+    .layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 100%;
+        background: set_gradient();
+
+        h1 {
+            color: #ffffff;
+            font-family: "NINO";
+            text-align: center;
+            margin-top: 250px;
+        }
+
+        .more {
+            background-color: #ffffff;
+            padding: 12px 14px;
+            outline: none;
+            font-family: "NINO";
+            border-radius: 10px;
+            text-decoration: none;
+            width: 250px;
+            border: none;
+            color: $gradient1;
+            font-weight: bold;
+            overflow: hidden;
+            @include durations();
+
+            &:hover {
+                -webkit-animation: anim 1s infinite;
+                transition-duration: 0.4s;
+            }
+        }
+    }
+}
+
+footer {
+    @include startup();
+    width: 100%;
+    overflow: hidden;
+    background-color: #202020;
+
+    img {
+        width: 100px;
+        height: 100px;
+    }
+
+    h4.text-light {
+        font-family: "NINO";
+        color: $gradient2 !important;
+    }
+
+    p {
+        font-family: "NINO";
+        color: #fff;
+    }
+
+    .social {
+        overflow: hidden;
+        border-radius: 50px;
+        width: 50px;
+        height: 50px;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.3);
+        padding: 10px 10px;
+        display: inline-block;
+        margin: 10px;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        i {
+            position: relative;
+            color: #fff;
+            text-align: center;
+            padding-top: 6px;
+        }
+    }
+
+    .link {
+        text-decoration: none;
+        color: #fff;
+        font-family: "NINO";
+
+        &:hover {
+            color: lightgray;
+        }
+    }
+}
+
+@mixin style_icons() {
+    padding: 12px 13px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+    display: inline-block;
+    border-radius: 50%;
+}
+
+.fa-phone {
+    @include style_icons();
+    padding: 12px 14.5px;
+}
+
+.fa-envelope {
+    @include style_icons();
+}
+
+.fa-map-marker {
+    @include style_icons();
+    padding: 12px 17px;
+}
+
+.bg-light {
+    h2 {font-family: "NINO";}
+    p {font-family: "NINO";}
+
+    i {
+        background: linear-gradient(#F00B51, #7366FF);
+    }
+}
+
+.form-control {
+    padding: 22px 16px !important;
+}
+
+textarea { resize: none; }
+
+.send {
+    background: linear-gradient(#F00B51, #7366FF);
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    font-family: "NINO";
+    padding: 16px 20px;
+    color: #fff;
+    font-weight: bold;
+    @include durations();
+
+    &:hover {
+        background: linear-gradient(#7366FF, #F00B51);
+        transition-duration: 0.5s;
+    }
+}
+
+#ab {
+    p {
+        font-family: "NINO";
+    }
+}
+
+.bottom-line {
+    margin: 0;
+    padding: 6px 6px;
+    background-color: #101010;
+    font-family: "NINO";
+    color: #fff;
+    width: 100%;
+}
+
+.scrolled_nav {
+    background-color: #fff !important;
+    @include durations();
+
+    .nav-link {
+        color: #F00B51 !important;
+    }
+
+    .custom {
+        font-family: "Allison";
+        color: #F00B51;
+        text-decoration: none;
+    
+        &:hover {
+            text-decoration: none;
+        }
+    }
+}
+
+#pp {
+    p, h4 {
+        font-family: "NINO";
+    }
+}
